@@ -1,0 +1,65 @@
+{
+  "save_locations": {
+    "output": "c:\\IA-Inventory\\Test\\output",
+    "input": "c:\\IA-Inventory\\Test\\input"
+  },
+  "processing": {
+    "mode": "individual",
+    "analysis_depth": "detailed",
+    "preserve_original_structure": true,
+    "include_page_references": true,
+    "cross_document_analysis": true,
+    "include_practical_examples": true
+  },
+  "output": {
+    "format": "md",
+    "language": "es",
+    "generate_zip": false,
+    "zip_name": "test.zip",
+    "include_manifest": true
+  },
+  "summary": {
+    "style": "academic_natural",
+    "detail_level": "comprehensive"
+  },
+  "chapter_analysis": {
+    "enabled": true,
+    "key_concepts_per_chapter": 10
+  },
+  "conceptual_map": {
+    "enabled": true,
+    "format": "mermaid",
+    "max_depth": 5
+  },
+  "podcast": {
+    "enabled": false,
+    "style": "educational",
+    "tone": "natural_conversational",
+    "target_duration_minutes": 12,
+    "speakers": 2
+  },
+  "presentation": {
+    "enabled": true,
+    "style": "educational",
+    "theme": "modern",
+    "slides_per_chapter": 3,
+    "include_title_slide": true,
+    "include_summary_slide": true,
+    "include_conceptual_map": true,
+    "include_key_questions": true,
+    "include_speaker_notes": false
+  },
+
+  "questions": {
+    "enabled": true,
+    "count": 10,
+    "difficulty": "mixed"
+  },
+  "consolidated": {
+    "include_common_topics": true,
+    "include_document_contributions": true,
+    "include_similarities": true,
+    "include_differences": true,
+    "include_integrated_conclusions": true
+  }
+}

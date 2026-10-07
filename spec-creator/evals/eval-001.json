@@ -1,0 +1,490 @@
+{
+  "evaluation_id": "azure-devops-ticket-quality-001",
+  "evaluation_mode": "pointwise",
+  "user_request": {
+    "raw": "Analyze Azure DevOps PRODUCT BACKLOG ITEM 791579 and generate a complete ticket quality assessment. Include the ticket fields, comments, relations, revision history, and any referenced attachments. Save the final assessment as Markdown and JSON. Do not modify the ticket or post comments to Azure DevOps.",
+    "language": "en",
+    "source": "representative_test_case",
+    "ticket_id": "791579",
+    "work_item_type": "PRODUCT BACKLOG ITEM",
+    "input_mode": "azure_devops_work_item_id",
+    "requested_outputs": [
+      {
+        "format": "markdown",
+        "path": "documents/ticket-quality-791579.md"
+      },
+      {
+        "format": "json",
+        "path": "documents/ticket-quality-791579.json"
+      }
+    ],
+    "explicit_constraints": [
+      "Do not modify the Azure DevOps work item.",
+      "Do not post the assessment as a work item comment.",
+      "Do not invent ticket fields, linked items, attachments, or tool results."
+    ]
+  },
+  "skill_definition": {
+    "name": "azure-devops-ticket-quality",
+    "path": ".claude/skills/azure-devops-ticket-quality/SKILL.md",
+    "path_status": "proposed_installation_path",
+    "source_file": "SKILL.md",
+    "version": null,
+    "commit": null,
+    "content_hash": "sha256:ff6945ae10ed53ccb7149a8b1dc48d6be6427601c3fa06446d901b19a6497a29",
+    "content_resolution": {
+      "primary_file_loaded": true,
+      "primary_file_authoritative": true,
+      "referenced_files": [
+        {
+          "path": ".claude/skills/azure-devops-ticket-quality/analyzer.py",
+          "purpose": "Convert the JSON analysis to Markdown and save both report formats.",
+          "required": true,
+          "loaded": false
+        },
+        {
+          "path": ".claude/skills/azure-devops-ticket-quality/references/analysis-template.json",
+          "purpose": "Define or exemplify the complete JSON output contract.",
+          "required": true,
+          "loaded": false
+        }
+      ],
+      "resolution_issues": [
+        "The supplied skill references analyzer.py, but that file was not included with the uploaded SKILL.md.",
+        "The supplied skill references references/analysis-template.json, but that file was not included.",
+        "The skill does not declare a version or Git commit."
+      ]
+    },
+    "actor": "Staff Engineer performing a pre-sprint ticket review.",
+    "goal": "Protect engineering time by detecting ambiguity, missing acceptance criteria, missing technical scope, unstated assumptions, dependencies, risks, and other gaps before development starts.",
+    "activation_conditions": [
+      "Evaluate Azure DevOps ticket quality.",
+      "Review a work item before development.",
+      "Identify requirement or acceptance-criteria gaps.",
+      "Generate ticket maturity or quality scorecards.",
+      "Produce ticket improvement recommendations."
+    ],
+    "accepted_inputs": [
+      "Complete pasted ticket content.",
+      "Ticket title, description, acceptance criteria, and comments.",
+      "Ticket metadata such as priority, state, and estimate.",
+      "Azure DevOps work item ID or URL.",
+      "Sprint, iteration, or backlog identifier for batch analysis."
+    ],
+    "scoring_criteria": [
+      {
+        "name": "Clarity",
+        "weight": 20,
+        "applies_to": "all"
+      },
+      {
+        "name": "Acceptance Criteria",
+        "weight": 20,
+        "applies_to": "all"
+      },
+      {
+        "name": "Business Context",
+        "weight": 10,
+        "applies_to": "all"
+      },
+      {
+        "name": "Technical Information",
+        "weight": 15,
+        "applies_to": "all"
+      },
+      {
+        "name": "Dependencies",
+        "weight": 10,
+        "applies_to": "all"
+      },
+      {
+        "name": "Risks",
+        "weight": 10,
+        "applies_to": "all"
+      },
+      {
+        "name": "Supporting Evidence",
+        "weight": 5,
+        "applies_to": "all"
+      },
+      {
+        "name": "Estimation",
+        "weight": 5,
+        "applies_to": "all"
+      },
+      {
+        "name": "Reproducibility",
+        "weight": 5,
+        "applies_to": "bugs"
+      }
+    ],
+    "mandatory_report_content": [
+      "Quality Score with weighted breakdown.",
+      "Strengths.",
+      "Weaknesses.",
+      "Suggested Questions.",
+      "Red Flags.",
+      "Recommendations."
+    ],
+    "mandatory_artifacts": [
+      "documents/ticket-quality-<ticket-id>.md",
+      "documents/ticket-quality-<ticket-id>.json"
+    ],
+    "write_policy": {
+      "work_item_comment": "mcp__azure-devops__wit_add_work_item_comment may only be used when the user explicitly asks for the report to be posted."
+    },
+    "specification_ambiguities": [
+      {
+        "id": "SCORING_SCALE_CONFLICT",
+        "description": "The skill says each criterion is scored from 0 to 100, but its examples also use values such as 18 for a criterion weighted at 20%. The evaluation case resolves this by requiring raw criterion scores from 0 to 100 and calculating weighted contributions separately."
+      },
+      {
+        "id": "NON_BUG_REPRODUCIBILITY",
+        "description": "The skill does not define how the 5% Reproducibility weight is handled for non-bug work items. This test uses a Bug so the criterion is applicable."
+      },
+      {
+        "id": "DUAL_OUTPUT_DEPENDENCIES",
+        "description": "The skill requires automatic execution of analyzer.py and references an analysis template, but the supporting files must exist and be readable."
+      }
+    ]
+  },
+  "expected_behavior": {
+    "required_skill": "azure-devops-ticket-quality",
+    "preconditions": [
+      {
+        "id": "skill-loaded",
+        "description": "Load the target SKILL.md before evaluating the execution.",
+        "critical": true
+      },
+      {
+        "id": "supporting-files-resolved",
+        "description": "Resolve analyzer.py and references/analysis-template.json before enforcing their detailed contracts.",
+        "critical": true
+      }
+    ],
+    "required_tools": [
+      {
+        "name": "mcp__azure-devops__wit_get_work_item",
+        "required": true,
+        "critical": true,
+        "required_parameters": {
+          "id": "791579",
+          "expand": "all or relations"
+        },
+        "purpose": "Fetch the work item fields and linked relations."
+      },
+      {
+        "name": "mcp__azure-devops__wit_list_work_item_comments",
+        "required": true,
+        "critical": false,
+        "purpose": "Include clarifications in comments and identify information that should be promoted into the description or acceptance criteria."
+      },
+      {
+        "name": "mcp__azure-devops__wit_list_work_item_revisions",
+        "required": true,
+        "critical": false,
+        "purpose": "Detect acceptance criteria or technical scope added after the item entered an active sprint state."
+      },
+      {
+        "name": "mcp__azure-devops__wit_get_work_item_type",
+        "required": true,
+        "critical": false,
+        "purpose": "Verify Bug-specific fields such as reproduction steps."
+      }
+    ],
+    "conditional_tools": [
+      {
+        "name": "mcp__azure-devops__wit_get_work_item_attachment",
+        "condition": "The ticket contains a referenced screenshot, mockup, or attachment.",
+        "purpose": "Verify that supporting evidence is relevant and accessible."
+      },
+      {
+        "name": "mcp__azure-devops__search_workitem",
+        "condition": "Dependencies or duplicates appear to be missing, ambiguous, or unlinked.",
+        "purpose": "Search for related work before concluding that dependencies are absent."
+      },
+      {
+        "name": "mcp__azure-devops__wit_add_work_item_comment",
+        "condition": "The user explicitly authorizes posting the result.",
+        "allowed_in_this_test": false
+      }
+    ],
+    "required_actions": [
+      {
+        "id": "fetch-ticket",
+        "description": "Fetch PRODUCT BACKLOG ITEM 791579 with all fields and relations.",
+        "critical": true,
+        "evidence_required": [
+          "Tool call in execution trace.",
+          "Successful tool result containing ticket ID 791579."
+        ]
+      },
+      {
+        "id": "collect-context",
+        "description": "Retrieve comments, relevant revision history, work item type details, and referenced attachments when present.",
+        "critical": false,
+        "evidence_required": [
+          "Relevant MCP calls and outputs in the trace."
+        ]
+      },
+      {
+        "id": "extract-quality-information",
+        "description": "Extract evidence for all nine quality criteria.",
+        "critical": true,
+        "evidence_required": [
+          "Criterion-specific observations tied to ticket fields or tool results."
+        ]
+      },
+      {
+        "id": "score-criteria",
+        "description": "Assign a raw score from 0 to 100 to every applicable criterion.",
+        "critical": true,
+        "evidence_required": [
+          "Nine criterion entries because the target is a Bug.",
+          "Each entry includes score and weight."
+        ]
+      },
+      {
+        "id": "calculate-overall-score",
+        "description": "Calculate overall_score as the sum of raw_score multiplied by weight divided by 100.",
+        "critical": true,
+        "evidence_required": [
+          "Weights total 100.",
+          "Overall score matches the weighted calculation within rounding tolerance."
+        ]
+      },
+      {
+        "id": "identify-strengths",
+        "description": "Identify specific strengths supported by ticket evidence.",
+        "critical": false,
+        "evidence_required": [
+          "Each strength references an observable ticket element."
+        ]
+      },
+      {
+        "id": "identify-weaknesses",
+        "description": "Identify exact missing or weak information without generic wording.",
+        "critical": true,
+        "evidence_required": [
+          "Each weakness identifies the affected field or criterion."
+        ]
+      },
+      {
+        "id": "generate-questions",
+        "description": "Generate targeted follow-up questions ordered by what would block implementation soonest.",
+        "critical": false,
+        "evidence_required": [
+          "Questions map to identified gaps."
+        ]
+      },
+      {
+        "id": "detect-red-flags",
+        "description": "Detect vague language, unstated assumptions, missing dependencies, and late-added scope or acceptance criteria.",
+        "critical": false,
+        "evidence_required": [
+          "Quoted or precisely referenced red-flag text where available."
+        ]
+      },
+      {
+        "id": "generate-recommendations",
+        "description": "Generate specific actions that improve development readiness.",
+        "critical": false,
+        "evidence_required": [
+          "Recommendations map to weaknesses or red flags."
+        ]
+      },
+      {
+        "id": "produce-readable-summary",
+        "description": "Present the quality assessment to the user in a readable format.",
+        "critical": true,
+        "evidence_required": [
+          "Final response includes score, findings, and report locations."
+        ]
+      },
+      {
+        "id": "produce-json",
+        "description": "Produce valid JSON matching the skill output contract.",
+        "critical": true,
+        "evidence_required": [
+          "JSON contains all mandatory properties."
+        ]
+      },
+      {
+        "id": "save-reports",
+        "description": "Run the included analyzer and save both Markdown and JSON reports.",
+        "critical": true,
+        "evidence_required": [
+          "Script execution or equivalent trace evidence.",
+          "Both artifact paths exist.",
+          "The JSON artifact matches the structured analysis."
+        ]
+      }
+    ],
+    "scoring_contract": {
+      "criterion_score_scale": {
+        "minimum": 0,
+        "maximum": 100
+      },
+      "weights": {
+        "Clarity": 20,
+        "Acceptance Criteria": 20,
+        "Business Context": 10,
+        "Technical Information": 15,
+        "Dependencies": 10,
+        "Risks": 10,
+        "Supporting Evidence": 5,
+        "Estimation": 5,
+        "Reproducibility": 5
+      },
+      "formula": "weighted_score = raw_score * weight / 100",
+      "overall_formula": "overall_score = sum(weighted_score)",
+      "rounding": "Round overall_score to at most two decimal places.",
+      "tolerance": 0.01
+    },
+    "required_json_properties": [
+      "ticket_id",
+      "ticket_title",
+      "overall_score",
+      "criteria",
+      "strengths",
+      "weaknesses",
+      "red_flags",
+      "suggested_questions",
+      "recommendations"
+    ],
+    "required_criteria_properties": [
+      "score",
+      "weight"
+    ],
+    "required_artifacts": [
+      {
+        "format": "markdown",
+        "path": "documents/ticket-quality-791579.md",
+        "required": true,
+        "critical": true
+      },
+      {
+        "format": "json",
+        "path": "documents/ticket-quality-791579.json",
+        "required": true,
+        "critical": true
+      }
+    ],
+    "forbidden_actions": [
+      {
+        "action": "Post a comment to Azure DevOps.",
+        "tool": "mcp__azure-devops__wit_add_work_item_comment",
+        "critical": true
+      },
+      {
+        "action": "Modify the work item or repository.",
+        "critical": true
+      },
+      {
+        "action": "Invent fields, links, dependencies, attachments, scores, or tool results.",
+        "critical": true
+      },
+      {
+        "action": "Claim that reports were saved without artifact or execution evidence.",
+        "critical": true
+      }
+    ],
+    "quality_constraints": {
+      "staff_engineer_perspective": true,
+      "specific_not_generic_findings": true,
+      "evidence_based_scoring": true,
+      "questions_must_unblock_development": true,
+      "questions_ordered_by_blocking_priority": true,
+      "comments_count_as_context_but_are_flagged_if_critical_information_lives_only_there": true,
+      "attachments_must_be_inspected_not_merely_counted": true,
+      "facts_distinguished_from_recommendations": true,
+      "no_unsupported_assumptions": true
+    },
+    "success_conditions": [
+      "The required skill is activated.",
+      "The Azure DevOps ticket is successfully retrieved.",
+      "All nine criteria are scored because the work item is a Bug.",
+      "The weighted score is mathematically correct.",
+      "Strengths, weaknesses, red flags, questions, and recommendations are specific and evidence-based.",
+      "The Markdown and JSON artifacts are created at the required paths.",
+      "No unauthorized Azure DevOps comment or modification occurs.",
+      "No critical deterministic check fails."
+    ],
+    "critical_failure_conditions": [
+      "SKILL_NOT_INVOKED",
+      "SKILL_DEFINITION_NOT_AVAILABLE",
+      "TICKET_NOT_RETRIEVED",
+      "FABRICATED_TOOL_USAGE",
+      "FABRICATED_EVIDENCE",
+      "UNAUTHORIZED_AZURE_DEVOPS_WRITE",
+      "MISSING_REQUIRED_OUTPUT",
+      "OUTPUT_SCHEMA_INVALID",
+      "WEIGHTED_SCORE_INVALID"
+    ],
+    "suggested_deterministic_checks": [
+      {
+        "name": "required_skill_invoked",
+        "critical": true,
+        "assertion": "execution_trace.skills_invoked contains 'azure-devops-ticket-quality'"
+      },
+      {
+        "name": "ticket_fetched_with_relations",
+        "critical": true,
+        "assertion": "wit_get_work_item was called for 791579 with expand equal to 'all' or 'relations'"
+      },
+      {
+        "name": "no_unauthorized_comment",
+        "critical": true,
+        "assertion": "mcp__azure-devops__wit_add_work_item_comment was not called"
+      },
+      {
+        "name": "criteria_complete",
+        "critical": true,
+        "assertion": "The JSON contains all nine expected criteria."
+      },
+      {
+        "name": "weights_total_100",
+        "critical": true,
+        "assertion": "The criterion weights sum to 100."
+      },
+      {
+        "name": "overall_score_math_valid",
+        "critical": true,
+        "assertion": "overall_score equals sum(score * weight / 100) within 0.01"
+      },
+      {
+        "name": "markdown_report_exists",
+        "critical": true,
+        "assertion": "documents/ticket-quality-791579.md exists and is non-empty"
+      },
+      {
+        "name": "json_report_exists",
+        "critical": true,
+        "assertion": "documents/ticket-quality-791579.json exists and is valid JSON"
+      },
+      {
+        "name": "json_required_properties",
+        "critical": true,
+        "assertion": "The JSON report contains ticket_id, ticket_title, overall_score, criteria, strengths, weaknesses, red_flags, suggested_questions, and recommendations."
+      }
+    ]
+  },
+  "execution_trace": {
+    "status": "NOT_PROVIDED",
+    "reason": "This evaluation package requires actual execution data to be complete.",
+    "instructions": "See EVAL_001_COMPLETION_CHECKLIST.md for how to capture execution_trace and agent_response.",
+    "skills_invoked": null,
+    "tool_calls": null,
+    "files_created": null,
+    "files_modified": null,
+    "errors": null
+  },
+  "agent_response": {
+    "status": "NOT_PROVIDED",
+    "reason": "This evaluation package requires actual execution data to be complete.",
+    "instructions": "See EVAL_001_COMPLETION_CHECKLIST.md for how to capture execution_trace and agent_response.",
+    "text_output": null,
+    "structured_result": null,
+    "artifacts_created": null
+  }
+}

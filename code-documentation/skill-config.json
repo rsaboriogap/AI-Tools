@@ -1,0 +1,9 @@
+{
+  "targetBranch": "feature/IA-Test",
+  "baseBranch": "Blazon-Develop",
+  "filePath": "C:/Code/MSI-Client/JGS - Next/**",
+  "commitIds": ["72c65822"],
+  "fileTypes": [".cs"],
+  "commentFormat": "// GAP-note:rsaborio. <description>",
+  "approvalMode": "review-one-by-one"
+}

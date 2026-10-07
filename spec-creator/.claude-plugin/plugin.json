@@ -1,0 +1,15 @@
+{
+  "name": "vbu-hackathon-project",
+  "version": "0.1.0",
+  "description": "VBU hackathon plugin scaffold for Claude Code",
+  "author":
+    {
+      "name": "Ronald Saborio",
+      "email": "rsaborio@growthaccelerationpartners.com"
+    },
+  "license": "UNLICENSED",
+  "keywords": [
+    "hackathon",
+    "vbu"
+  ]
+}

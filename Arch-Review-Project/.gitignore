@@ -1,0 +1,12 @@
+dist/
+build/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+arch-review-output/*
+!arch-review-output/.gitkeep
+!arch-review-output/README.md
+.DS_Store
+.idea/
+*.swp

@@ -1,0 +1,85 @@
+{
+  "ticket_id": "12345",
+  "ticket_title": "Feature/Bug Title Here",
+  "overall_score": 75,
+  "criteria": {
+    "Clarity": {
+      "score": 18,
+      "weight": 20,
+      "notes": "Descriptive title, clear problem statement"
+    },
+    "Acceptance Criteria": {
+      "score": 15,
+      "weight": 20,
+      "notes": "Well-defined success conditions"
+    },
+    "Business Context": {
+      "score": 8,
+      "weight": 10,
+      "notes": "Why this is needed, business impact"
+    },
+    "Technical Information": {
+      "score": 10,
+      "weight": 15,
+      "notes": "APIs, databases, services affected"
+    },
+    "Dependencies": {
+      "score": 5,
+      "weight": 10,
+      "notes": "Other work items, infrastructure required"
+    },
+    "Risks": {
+      "score": 2,
+      "weight": 10,
+      "notes": "Technical risks, breaking changes, security"
+    },
+    "Supporting Evidence": {
+      "score": 5,
+      "weight": 5,
+      "notes": "Screenshots, mockups, documentation"
+    },
+    "Estimation": {
+      "score": 5,
+      "weight": 5,
+      "notes": "Story points or complexity"
+    },
+    "Reproducibility": {
+      "score": 5,
+      "weight": 5,
+      "notes": "For bugs: repro steps, expected behavior"
+    }
+  },
+  "strengths": [
+    "✔ Clear functional description",
+    "✔ Well-defined acceptance criteria",
+    "✔ Concise problem statement"
+  ],
+  "weaknesses": [
+    "✖ No technical scope (which components? APIs?)",
+    "✖ Dependencies not identified",
+    "✖ Risk analysis missing",
+    "✖ Impact scale undefined"
+  ],
+  "red_flags": [
+    "⚠ Vague urgency marker: 'ASAP' (timeline undefined)",
+    "⚠ Missing technical context for developers",
+    "⚠ No context on which systems are affected"
+  ],
+  "suggested_questions": [
+    "Which microservice/API handles this functionality?",
+    "How many users/customers are affected?",
+    "Are there consuming APIs that depend on current behavior?",
+    "Is database migration required?",
+    "What regression tests are mandatory?",
+    "Does this impact any external API contracts?"
+  ],
+  "recommendations": [
+    "Add specific technical scope: identify affected services and APIs",
+    "Document database schema changes if needed",
+    "Quantify business impact: number of affected customers",
+    "Add regression test requirements to acceptance criteria",
+    "Define explicit timeline instead of vague 'ASAP'",
+    "Document rollback plan if applicable"
+  ],
+  "quality_interpretation": "Fair. Significant gaps exist. Address before starting development."
+}

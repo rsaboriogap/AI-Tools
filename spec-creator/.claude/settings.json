@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__azure-devops__core_list_projects",
+      "mcp__azure-devops__wit_my_work_items",
+      "mcp__azure-devops__wit_get_work_item_type"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "azure-devops"
+  ],
+  "plugins": [
+    {
+      "path": "D:\\Code\\Hackathon project\\vbu-hackathon-project"
+    }
+  ],
+  "technicalSolutionAnalysis": {
+    "defaultProjectPath": "C:\\Code\\MSI-Client\\JGS - Next"
+  },
+  "azureDevOpsTicketQuality": {
+    "defaultProject": "Product-Blazor"
+  }
+}
+

@@ -1,0 +1,28 @@
+{
+  "name": "vbu-hackathon-project",
+  "description": "Spec-driven development tools for Azure DevOps integration",
+  "owner": {
+    "name": "Growth Acceleration Partners",
+    "email": "rsaborio@growthaccelerationpartners.com"
+  },
+  "plugins": [
+    {
+      "name": "vbu-hackathon-project",
+      "version": "0.1.0",
+      "description": "Spec-driven development plugin: connect to Azure DevOps, pull tickets, generate implementation specs",
+      "source": ".",
+      "author": {
+        "name": "Ronald Saborio",
+        "email": "rsaborio@growthaccelerationpartners.com"
+      },
+      "license": "UNLICENSED",
+      "keywords": [
+        "azure-devops",
+        "spec-generation",
+        "technical-spec",
+        "ticket-quality",
+        "spec-driven-development"
+      ]
+    }
+  ]
+}

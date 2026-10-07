@@ -1,0 +1,67 @@
+{
+  "project": "BlazorDCP",
+  "analysis_date": "2026-07-16",
+  "architecture": {
+    "style": "Modular component library with VB.NET to C# migration support",
+    "layers": [
+      {
+        "name": "Gap.Blazor",
+        "path": "src/Gap.Blazor",
+        "purpose": "Core Blazor infrastructure"
+      },
+      {
+        "name": "Gap.Blazor.Components",
+        "path": "src/Gap.Blazor.Components",
+        "purpose": "Reusable Blazor components (DataGridView, etc.)"
+      },
+      {
+        "name": "Gap.Blazor.VBUC",
+        "path": "src/Gap.Blazor.VBUC",
+        "purpose": "VB.NET to C# migration utilities"
+      }
+    ]
+  },
+  "technology_stack": {
+    "backend": ".NET / C# / VB.NET",
+    "frontend": "Blazor (WebAssembly or Server)",
+    "data": "DataGridView component with DataSource binding"
+  },
+  "frameworks": [
+    "Blazor",
+    ".NET Standard/.NET 6+"
+  ],
+  "testing": {
+    "projects": [
+      "Gap.Blazor.Test",
+      "Gap.Blazor.Components.Test",
+      "Gap.Blazor.VBUC.Test"
+    ],
+    "coverage": "1:1 test-to-main project mapping"
+  },
+  "key_patterns": [
+    "Component-based architecture",
+    "DataSource binding for grids",
+    "DateTime format inconsistency: WinForms uses short format (no time), Blazor defaults to long format"
+  ],
+  "risks": [
+    {
+      "level": "High",
+      "issue": "DateTime format WinForms/Blazor parity gap",
+      "file": "src/Gap.Blazor.Components/DataGridView"
+    },
+    {
+      "level": "Medium",
+      "issue": "Dependent work items (791407, 791408, 790224, 791403) relationships unclear"
+    },
+    {
+      "level": "Medium",
+      "issue": "Breaking change implications for existing Blazor users not documented"
+    }
+  ],
+  "recommendations": [
+    "Implement short DateTime format by default in DataGridView component",
+    "Add format specification option per-column",
+    "Include unit and integration tests for DateTime formatting",
+    "Document migration path for WinForms DataGridView to Blazor"
+  ]
+}

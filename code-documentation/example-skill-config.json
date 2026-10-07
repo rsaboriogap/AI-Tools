@@ -1,0 +1,8 @@
+{
+  "targetBranch": "your-branch-name",
+  "baseBranch": "base-branch",
+  "commitIds": [],
+  "fileTypes": [".ts", ".tsx", ".js", ".cs", ".sql"],
+  "commentFormat": "// {comment}",
+  "approvalMode": "review-one-by-one"
+}
