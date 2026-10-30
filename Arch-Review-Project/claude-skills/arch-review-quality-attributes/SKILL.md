@@ -1,7 +1,7 @@
 ---
 name: arch-review-quality-attributes
 description: Specialist sub-skill focused on scalability, performance, availability/resilience, and maintainability. Triggers "review scalability", "audit performance". Read-only. English output.
-allowed-tools: Read, Glob, Grep, Bash, Write
+allowed-tools: Read, Glob, Grep, Bash
 ---
 
 # Quality Attributes Review

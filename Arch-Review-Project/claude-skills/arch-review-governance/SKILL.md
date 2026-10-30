@@ -1,7 +1,7 @@
 ---
 name: arch-review-governance
 description: Specialist sub-skill focused on documentation, ADRs, C4 diagrams, cost modeling, anti-patterns. Triggers "review documentation", "check ADRs". Read-only. English output.
-allowed-tools: Read, Glob, Grep, Bash, Write
+allowed-tools: Read, Glob, Grep, Bash
 ---
 
 # Governance, Documentation & Cost Review

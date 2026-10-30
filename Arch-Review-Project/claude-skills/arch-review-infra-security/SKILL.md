@@ -1,7 +1,7 @@
 ---
 name: arch-review-infra-security
 description: Specialist sub-skill focused on infrastructure, CI/CD, observability, auth, secrets, OWASP. Triggers "audit security", "review deployment". Read-only. English output.
-allowed-tools: Read, Glob, Grep, Bash, Write
+allowed-tools: Read, Glob, Grep, Bash
 ---
 
 # Infrastructure & Security Review

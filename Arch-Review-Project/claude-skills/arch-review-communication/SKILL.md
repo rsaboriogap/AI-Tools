@@ -1,7 +1,7 @@
 ---
 name: arch-review-communication
-description: Specialist sub-skill focused on sync/async, error handling, idempotency, API versioning. Triggers "review communication", "audit messaging", "revisar comunicaciÃ³n", "evaluar manejo de errores". Read-only. English output.
-allowed-tools: Read, Glob, Grep, Bash, Write
+description: Specialist sub-skill focused on sync/async, error handling, idempotency, API versioning. Triggers "review communication", "audit messaging", "revisar comunicación", "evaluar manejo de errores". Read-only. English output.
+allowed-tools: Read, Glob, Grep, Bash
 ---
 
 # Communication & Integration Review

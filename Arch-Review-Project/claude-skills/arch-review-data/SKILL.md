@@ -1,7 +1,7 @@
 ---
 name: arch-review-data
 description: Specialist sub-skill focused on data models, consistency, migrations, caching. Triggers "review data layer", "audit database design". Read-only. English output.
-allowed-tools: Read, Glob, Grep, Bash, Write
+allowed-tools: Read, Glob, Grep, Bash
 ---
 
 # Data & Persistence Review

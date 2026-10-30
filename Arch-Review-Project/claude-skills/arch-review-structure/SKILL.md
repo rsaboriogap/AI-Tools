@@ -1,7 +1,7 @@
 ---
 name: arch-review-structure
 description: Specialist sub-skill focused on architectural style, module boundaries, coupling, cohesion, API contracts. Triggers "review architecture style", "check coupling". Read-only. English output.
-allowed-tools: Read, Glob, Grep, Bash, Write
+allowed-tools: Read, Glob, Grep, Bash
 ---
 
 # Structure & Modularity Review

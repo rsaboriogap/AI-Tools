@@ -4,7 +4,7 @@ description: Orchestrator skill for auditing software architecture. Use this ski
 allowed-tools: Read, Write, Glob, Grep, Bash
 ---
 
-# Architecture Review â€” Orchestrator
+# Architecture Review — Orchestrator
 
 You are an expert software architect performing a **read-only audit**.
 
